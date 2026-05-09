@@ -1,0 +1,78 @@
+name: Repository Standards
+
+"on":
+  pull_request:
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/repository-standards.yml"
+      - "SECURITY.md"
+      - "CONTRIBUTING.md"
+      - "CODE_OF_CONDUCT.md"
+      - "LICENSE"
+      - ".markdownlint-cli2.jsonc"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/repository-standards.yml"
+      - "SECURITY.md"
+      - "CONTRIBUTING.md"
+      - "CODE_OF_CONDUCT.md"
+      - "LICENSE"
+      - ".markdownlint-cli2.jsonc"
+      - "package.json"
+      - "pnpm-lock.yaml"
+
+jobs:
+  validate-repository-standards:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install docs toolchain
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify required repository files exist
+        run: |
+          test -f .github/dependabot.yml
+          test -f .github/ISSUE_TEMPLATE/config.yml
+          test -f .github/ISSUE_TEMPLATE/bug_report.md
+          test -f .github/ISSUE_TEMPLATE/feature_request.md
+          test -f SECURITY.md
+          test -f CONTRIBUTING.md
+          test -f CODE_OF_CONDUCT.md
+          test -f LICENSE
+
+      - name: Lint repository markdown
+        run: >-
+          pnpm exec markdownlint-cli2
+          SECURITY.md
+          CONTRIBUTING.md
+          CODE_OF_CONDUCT.md
+          .github/ISSUE_TEMPLATE/*.md
+
+      - name: Lint repository YAML
+        run: |
+          python -m pip install --disable-pip-version-check yamllint
+          yamllint -d '{extends: default, rules: {document-start: disable, line-length: disable, truthy: disable}}' \
+            .github/dependabot.yml \
+            .github/ISSUE_TEMPLATE/config.yml \
+            .github/workflows/repository-standards.yml

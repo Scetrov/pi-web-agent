@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability report
+    url: https://github.com/Scetrov/pi-web-agent/security/advisories/new
+    about: Report suspected vulnerabilities privately instead of opening a public issue.

@@ -17,6 +17,12 @@ Run from the repository root:
 pnpm docs:validate
 ```
 
+### Repository standards validation
+
+GitHub Actions validates repository governance files when they change,
+including `.github/dependabot.yml`, issue templates, `SECURITY.md`,
+`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `LICENSE`.
+
 ### Pre-commit setup
 
 ```bash
@@ -52,6 +58,7 @@ The extension bridge reads its runtime configuration from environment variables.
 
 - Frontend changes: `cd web/pi-web-ui && corepack pnpm build`
 - Docs changes: `pnpm docs:validate`
+- Repository standards changes: GitHub Actions validates governance files on PRs and pushes to `main`
 - Protocol changes: update `docs/PROTOCOL.md` and `docs/ARCHITECTURE.md`
 - Environment or workflow changes: update this file and `README.md`
 

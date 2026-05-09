@@ -84,3 +84,9 @@ pre-commit install
 ```
 
 This keeps local documentation checks aligned with CI.
+
+## Repository metadata hygiene
+
+Repository standards files such as `.github/dependabot.yml`, issue templates,
+`SECURITY.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `LICENSE` are
+validated by a dedicated GitHub Actions workflow when they change.

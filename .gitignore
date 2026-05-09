@@ -1,12 +1,24 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+.npm/
+.yarn/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # Build output
 dist/
 build/
 out/
+coverage/
 *.tsbuildinfo
+vite.svg
+
+# Test output
+playwright-report/
+test-results/
 
 # Environment
 .env
@@ -21,6 +33,10 @@ out/
 *~
 .DS_Store
 Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.Spotlight-V100/
+.Trashes/
 
 # Logs
 *.log
@@ -28,10 +44,17 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # Local pi config (optional: uncomment if settings contain secrets)
 # .pi/extensions/*/config.local.*
 
-# OS temp files
+# Cache and temp files
 *.tmp
 .cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.turbo/
+.temp/
+tmp/
