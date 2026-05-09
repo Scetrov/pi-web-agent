@@ -1,0 +1,52 @@
+name: Docs
+
+on:
+  pull_request:
+    paths:
+      - "README.md"
+      - "AGENTS.md"
+      - "docs/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".markdownlint-cli2.jsonc"
+      - ".pre-commit-config.yaml"
+      - "scripts/check-mermaid.mjs"
+      - ".github/workflows/docs.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "README.md"
+      - "AGENTS.md"
+      - "docs/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".markdownlint-cli2.jsonc"
+      - ".pre-commit-config.yaml"
+      - "scripts/check-mermaid.mjs"
+      - ".github/workflows/docs.yml"
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install docs toolchain
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate markdown and Mermaid diagrams
+        run: pnpm docs:validate

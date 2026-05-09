@@ -1,0 +1,16 @@
+{
+  "name": "pi-web-access-docs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "docs:lint": "markdownlint-cli2",
+    "docs:check-mermaid": "node scripts/check-mermaid.mjs",
+    "docs:validate": "pnpm run docs:lint && pnpm run docs:check-mermaid"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "markdownlint-cli2": "^0.18.1",
+    "mermaid": "^11.6.0"
+  }
+}

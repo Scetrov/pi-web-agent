@@ -1,0 +1,11 @@
+minimum_pre_commit_version: 3.7.0
+
+repos:
+  - repo: local
+    hooks:
+      - id: docs-validate
+        name: docs-validate
+        entry: pnpm docs:validate
+        language: system
+        pass_filenames: false
+        files: ^(README\.md|AGENTS\.md|docs/.*\.md|package\.json|pnpm-lock\.yaml|\.markdownlint-cli2\.jsonc|scripts/check-mermaid\.mjs|\.github/workflows/docs\.yml)$

@@ -1,0 +1,16 @@
+{
+  "globs": [
+    "README.md",
+    "AGENTS.md",
+    "docs/**/*.md"
+  ],
+  "noProgress": true,
+  "gitignore": true,
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": {
+      "siblings_only": true
+    }
+  }
+}
