@@ -9,7 +9,7 @@
     "docs:validate": "pnpm run docs:lint && pnpm run docs:check-mermaid"
   },
   "devDependencies": {
-    "jsdom": "^26.1.0",
+    "jsdom": "^29.1.1",
     "markdownlint-cli2": "^0.22.1",
     "mermaid": "^11.6.0"
   }
