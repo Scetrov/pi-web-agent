@@ -10,6 +10,10 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: chore(deps)
     rebase-strategy: auto
@@ -24,6 +28,10 @@ updates:
     labels:
       - dependencies
       - frontend
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: chore(deps)
     rebase-strategy: auto
@@ -38,6 +46,10 @@ updates:
     labels:
       - dependencies
       - github-actions
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: chore(ci)
     rebase-strategy: auto
