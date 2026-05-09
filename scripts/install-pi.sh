@@ -9,8 +9,8 @@ GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-log()  { echo -e "${CYAN}>>>${NC} $*"; }
-ok()   { echo -e "${GREEN} ✔${NC} $*"; }
+log() { echo -e "${CYAN}>>>${NC} $*"; }
+ok() { echo -e "${GREEN} ✔${NC} $*"; }
 
 # ── 0. Prereq checks ──────────────────────────────────────────────
 command -v bun >/dev/null 2>&1 || {
@@ -50,7 +50,6 @@ pi install npm:context-mode
 pi install npm:@m64/browser-tools
 
 log "Installing agent extras..."
-pi install npm:@blackbelt-technology/pi-agent-dashboard
 pi install npm:@samfp/pi-memory
 pi install npm:@tintinweb/pi-subagents
 ok "Agent extras installed"
@@ -62,3 +61,4 @@ pi list
 
 echo ""
 ok "All done. Run 'pi' to start."
+
