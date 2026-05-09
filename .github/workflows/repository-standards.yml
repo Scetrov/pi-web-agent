@@ -1,5 +1,8 @@
 name: Repository Standards
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 "on":
   pull_request:
     paths:
@@ -46,6 +49,11 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
       - name: Install docs toolchain
         run: pnpm install --frozen-lockfile
